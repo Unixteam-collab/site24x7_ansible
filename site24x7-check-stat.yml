@@ -1,0 +1,16 @@
+- hosts: pro-non
+  gather_facts: false
+  become: yes
+
+  tasks:
+    - name: Check if site24x7 is running
+      systemd:
+       name: site24x7monagent
+       state: started
+       enabled: yes
+      register: site24x7_status
+
+    - name: Display output
+      debug:
+       var: site24x7_status
+  

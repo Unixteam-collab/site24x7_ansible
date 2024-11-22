@@ -1,0 +1,11 @@
+---
+- name: Check status of Site24x7 server monitoring agent
+  hosts: pro-non
+  remote_user: csadmin
+  become: yes #added to give root priv.
+  tasks:
+     - name: Checking status of Site24x7 monitoring agent
+       ansible.builtin.service:
+         name: monagent
+         state: started
+      # shell: /opt/site24x7/monagent/bin/monagent start
